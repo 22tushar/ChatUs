@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const moment = require('moment');
-const socketIo = require("socket.io");
+// const socketIo = require("socket.io");
 const cors = require("cors")
 
 const {
@@ -15,9 +15,26 @@ const { formatMessage } = require("./services/message");
 const app = express();
 const port = 4000;
 
+
 app.use(cors());
+
+
+
 const server = http.createServer(app); 
-const io = socketIo(server);
+// const io = socketIo(server);
+const io = require("socket.io")(httpServer, {
+  origins: ["*"],
+
+  handlePreflightRequest: (req, res) => {
+    res.writeHead(200, {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST",
+      "Access-Control-Allow-Headers": "",
+      "Access-Control-Allow-Credentials": true
+    });
+    res.end();
+  }
+});
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
