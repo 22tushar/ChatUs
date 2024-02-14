@@ -14,18 +14,8 @@ const ROOT_CSS = css({
 });
 
 // const socket = io("http://localhost:4000");
-// const socket = io("https://chat-us-neon.vercel.app/"); //prod
+const socket = io("https://chat-us-neon.vercel.app/"); //prod
 // const io = require("socket.io-client");
-const socket = io("https://chat-us-neon.vercel.app/", {
-  withCredentials: true,
-  transportOptions: {
-    polling: {
-      extraHeaders: {
-        "my-custom-header": "abcd"
-      }
-    }
-  }
-});
 
 const ChatRoom = () => {
 

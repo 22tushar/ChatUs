@@ -22,17 +22,9 @@ app.use(cors());
 
 const server = http.createServer(app); 
 // const io = socketIo(server);
-const io = require("socket.io")(httpServer, {
-  origins: ["*"],
-
-  handlePreflightRequest: (req, res) => {
-    res.writeHead(200, {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,POST",
-      "Access-Control-Allow-Headers": "",
-      "Access-Control-Allow-Credentials": true
-    });
-    res.end();
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
   }
 });
 
