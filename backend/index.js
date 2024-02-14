@@ -11,7 +11,7 @@ const {
 const { formatMessage } = require("./services/message");
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 const server = http.createServer(app); 
 const io = socketIo(server);
