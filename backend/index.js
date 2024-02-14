@@ -2,6 +2,8 @@ const express = require("express");
 const http = require("http");
 const moment = require('moment');
 const socketIo = require("socket.io");
+const cors = require("cors")
+
 const {
   userJoin,
   getCurrentUser,
@@ -13,6 +15,7 @@ const { formatMessage } = require("./services/message");
 const app = express();
 const port = 4000;
 
+app.use(cors());
 const server = http.createServer(app); 
 const io = socketIo(server);
 
